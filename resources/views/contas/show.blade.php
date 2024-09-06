@@ -13,6 +13,13 @@
     <a href="{{ route('conta.index')}}">Listar</a><br>
 
     <h2>Detalhes da Conta</h2>
+    
+    {{-- Verificar se existe a sessão success e imprimir o valor --}}
+@if (session('success'))
+    <span style="color: #082;">
+        {{ session('success') }}
+    </span>
+@endif
 
 </body>
 

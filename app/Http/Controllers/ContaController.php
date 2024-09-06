@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Conta;
 
 class ContaController extends Controller
 {
@@ -27,12 +28,14 @@ class ContaController extends Controller
         return view('contas.create');
     }
 
-    // Cadastrar no banco de dados nova conta
-    public function store()
+    public function store(Request $request)
     {
-        dd("Cadastrar");
+        // Cadastrar no banco de dados na tabela contas os valores de todos os campos
+        Conta::create($request->all());
+    
+        // Redirecionar o usuário, enviar a mensagem de sucesso
+        return redirect()->route('conta.show')->with('success', 'Conta cadastrada com sucesso');
     }
-
     // Carregar o formulário editar a conta
     public function edit()
     {
